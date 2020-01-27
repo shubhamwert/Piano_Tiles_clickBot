@@ -1,5 +1,6 @@
 import pyautogui 
 import time
+import multiprocessing
 pyautogui.PAUSE = 0
 pyautogui.FAILSAFE = True
 
@@ -16,17 +17,18 @@ def getInitialData():
          x1=x
          y1=y
 
-def click_on_black(x,y):
-   pyautogui.moveTo(x,y)
-   if( pyautogui.pixelMatchesColor(x, y, (0, 0, 0))):
-      pyautogui.click(x=x,y=y)
-   else:
-     return 
+def click_on_black(x,y,stri="tag"):
+   while True:
+      # print(stri)
+      if( pyautogui.pixelMatchesColor(x, y, (0, 0, 0))):
+         pyautogui.click(x=x,y=y)
+      # else:
+      #    return 
 
 
 
 if __name__ == "__main__":
-   # getInitialData()
+   getInitialData()
    time.sleep(2)
    x=[714,868,1004,1210]
 
@@ -34,8 +36,6 @@ if __name__ == "__main__":
    while True:
       for x1 in x:
          click_on_black(x1,580)
-
-
-
+   
 
 #714 565 868 578 1004 583 1210 589
